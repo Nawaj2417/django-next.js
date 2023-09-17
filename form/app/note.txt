@@ -1,0 +1,68 @@
+// "use client"
+import React, { useState, useEffect } from 'react';
+
+
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
+import React from 'react'
+
+const Page = () => {
+    const decodedClassId = decodeURIComponent(params.classid || '');
+    
+  return (
+    <Stack  >
+
+<Paper   component="form">
+  
+  <div>
+    <TextField  required sx={{margin:"10px", width:"25%"}} id="filled-basic" label="first name" variant="filled" />
+    <TextField  required sx={{margin:"10px", width:"25%"}} id="filled-basic" label="last name" variant="filled" />
+    <TextField   required sx={{margin:"10px", width:"25%"}} id="filled-basic" label="id" variant="filled" type='number' inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} />
+    
+
+    </div>
+  <div>
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="age"     variant="filled" />
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="date of birth" variant="filled" />
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="address" variant="filled" />
+    </div>
+  <div>
+  <TextField sx={{margin:"10px", width:"25%"}}
+      disabled
+      id="outlined-disabled"
+      
+      defaultValue={decodedClassId}
+    />
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="Father name" variant="filled" />
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="Mother name" variant="filled" />
+    </div>
+  <div>
+ 
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="Mobile number" variant="filled" />
+    <TextField sx={{margin:"10px", width:"25%"}} id="filled-basic" label="Email" variant="filled" />
+    </div>
+    
+    
+   
+
+    <FormControl sx={{margin:"10px"}}>
+ <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+ <RadioGroup
+   row
+   aria-labelledby="demo-row-radio-buttons-group-label"
+   name="row-radio-buttons-group"
+ >
+   <FormControlLabel value="female" control={<Radio />} label="Female" />
+   <FormControlLabel value="male" control={<Radio />} label="Male" />
+  
+  
+ </RadioGroup>
+ <Button sx={{margin:"10px"}} variant="contained" type='submit'>Submit</Button>
+</FormControl>
+</Paper>
+    </Box>
+   </Stack>
+
+  )
+}
+
+export default Page

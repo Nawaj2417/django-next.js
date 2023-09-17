@@ -1,0 +1,71 @@
+"use client";
+import { Box, Button, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, TextField, Typography } from '@mui/material'
+import React, { useState } from 'react'; // Import useState
+
+const Page = () => {
+    // const decodedClassId = decodeURIComponent(params.classid || '');
+    
+    const [formData, setFormData] = useState({
+      first_name: '',
+      last_name: '',
+      id: 0,
+      age: '',
+      dob: '',
+      address: '',
+      father: '',
+      mother: '',
+      mobile: '',
+      email: '',
+      gender: 'female',
+    });
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+
+      try {
+        const response = await fetch('/api/admissions/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          console.log('Admission added successfully');
+          // Optionally, reset form after successful submission
+          setFormData({
+            first_name: '',
+            last_name: '',
+            id: 0,
+            age: '',
+            dob: '',
+            address: '',
+            father: '',
+            mother: '',
+            mobile: '',
+            email: '',
+            gender: 'female',
+          });
+        } else {
+          console.error('Failed to add admission');
+        }
+
+      } catch (error) {
+        console.error('Error adding admission:', error);
+      }
+    };
+
+    return (
+      <Stack>
+        <Paper component="form" onSubmit={handleSubmit}> {/* Attach onSubmit to form */}
+          {/* ... Your form inputs ... */}
+          <Button sx={{ margin: '10px' }} variant="contained" type="submit">
+            Submit
+          </Button>
+        </Paper>
+      </Stack>
+    )
+}
+
+export default Page;
